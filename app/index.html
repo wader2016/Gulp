@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+  <head>
+    <title data-ng-bind="'UCC 物流系统 | ' + $state.current.data.pageTitle"></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/Jcrop/css/Jcrop.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/order.css">
+    <link rel="stylesheet" href="styles/product.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/custom.css">
+    <link rel="stylesheet" href="styles/default.css">
+    <!--<link rel="stylesheet" href="styles/global/gfonts1.css">-->
+    <link rel="stylesheet" href="styles/gfonts2.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/plugins.css">
+    <!--<link rel="stylesheet" href="styles/global/red.css">-->
+    <link rel="stylesheet" href="styles/style-shop.css">
+    <link rel="stylesheet" href="styles/style-responsive.css">
+    <link rel="stylesheet" href="styles/stylesheet.css">
+    <link rel="stylesheet" href="styles/page.css">
+    <link rel="stylesheet" href="styles/toastr.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="assets/bootstrap-datepicker/css/datepicker.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+  </head>
+  <body ng-app="gulpApp" ng-controller="AppController" class="page-on-load">
+  <div ng-controller="indexController">
+    <!-- BEGIN PAGE SPINNER -->
+    <div ng-spinner-bar class="page-spinner-bar">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+    <!--END PAGE SPINNER -->
+    <!-- BEGIN HEADER -->
+    <div data-ng-include="'tpl/header.html'" data-ng-controller="HeaderController" class="page-header">
+    </div>
+    <!-- END HEADER -->
+    <div class="clearfix">
+    </div>
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+
+      <!-- BEGIN PAGE HEAD -->
+      <div data-ng-include="'tpl/page-head.html'" ng-if="authentication.isAuth==true" data-ng-controller="PageHeadController" class="page-head">
+      </div>
+      <!-- END PAGE HEAD -->
+      <!-- BEGIN PAGE CONTENT -->
+      <div class="page-content">
+        <div class="container">
+          <!-- BEGIN ACTUAL CONTENT -->
+          <div ui-view class="fade-in-up">
+          </div>
+          <!-- END ACTUAL CONTENT -->
+        </div>
+      </div>
+      <!-- END PAGE CONTENT -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <div data-ng-include="'tpl/footer.html'" ng-if="authentication.isAuth==true" data-ng-controller="FooterController">
+    </div>
+    <!-- END FOOTER -->
+  </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/jquery-migrate/jquery-migrate.js"></script>
+    <script src="bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="bower_components/blockUI/jquery.blockUI.js"></script>
+    <script src="bower_components/jquery.uniform/dist/js/jquery.uniform.standalone.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/linqjs/linq.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/Jcrop/js/Jcrop.js"></script>
+    <script src="bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/authService.js"></script>
+    <script src="scripts/services/authInterceptorService.js"></script>
+    <script src="scripts/services/CommonService.js"></script>
+    <script src="scripts/services/service.js"></script>
+    <script src="scripts/directives/directives.js"></script>
+    <script src="scripts/filters/ConvertFilter.js"></script>
+    <script src="scripts/controllers/LoginController.js"></script>
+    <script src="scripts/controllers/IndexController.js"></script>
+    <script src="scripts/controllers/HeaderController.js"></script>
+    <script src="scripts/controllers/SignUpController.js"></script>
+    <script src="scripts/controllers/LightTableController.js"></script>
+    <script src="scripts/controllers/AllOrderController.js"></script>
+    <script src="scripts/controllers/AllDeliveryOrderController.js"></script>
+    <script src="scripts/controllers/AnalyseController.js"></script>
+    <script src="scripts/controllers/ConfirmReceiptController.js"></script>
+    <script src="scripts/controllers/DeliveryFinishController.js"></script>
+    <script src="scripts/controllers/DeliverySearchController.js"></script>
+    <script src="scripts/controllers/OrderFinishController.js"></script>
+    <script src="scripts/controllers/OrderLoadingController.js"></script>
+    <script src="scripts/controllers/OrderPrepareController.js"></script>
+    <script src="scripts/controllers/OrderReceivingController.js"></script>
+    <script src="scripts/controllers/OrderRegisterController.js"></script>
+    <script src="scripts/controllers/OrderShippingController.js"></script>
+    <script src="scripts/controllers/OrderUnLoadController.js"></script>
+    <script src="scripts/controllers/ProductShippingController.js"></script>
+    <script src="scripts/controllers/ShippingDetailController.js"></script>
+    <script src="scripts/common/alertInfo.js"></script>
+    <script src="scripts/common/toastr.js"></script>
+    <script src="scripts/common/metronic.js"></script>
+    <script src="scripts/common/demo.js"></script>
+    <script src="scripts/common/layout.js"></script>
+    <script src="scripts/common/login.js"></script>
+
+
+        <!-- endbuild -->
+  <!-- 百度地图API-->
+  <script src="http://api.map.baidu.com/api?v=1.3" type="text/javascript"></script>
+  <!-- IP地址查询API-->
+  <script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+  <script src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+  <script type="text/javascript">
+    /* Init Metronic's core jquery plugins and layout scripts */
+    $(document).ready(function() {
+      Metronic.init(); // Run metronic theme
+//      Metronic.setAssetsPath('assets/'); // Set the assets folder path
+    });
+
+  </script>
+
+</body>
+</html>

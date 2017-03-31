@@ -1,0 +1,239 @@
+<div>
+    <div class="search-list">
+        <div class="search-item" style="min-width: 1150px">
+            <div class=" input-group search-product customer">
+                <input type="text" class="input-test" placeholder="指定客户" style="padding: 0 5px" ng-model="BuyerAccountName"/>
+            </div>
+            <div class="date-search">
+                <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" style="width: 300px !important;">
+                    <div class="input-group-addon" style="background: #ffffff;border: none;color: #a9a9a9;">开始</div>
+                    <input type="text" class="form-control" placeholder="From"  ng-model="DateFrom" style="border: none">
+								<span class="input-group-btn">
+									<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+								</span>
+                </div>
+                <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" style="width: 300px !important;">
+                    <div class="input-group-addon" style="background: #ffffff;border: none;color: #a9a9a9;">结束</div>
+                    <input type="text" class="form-control" placeholder="To" ng-model="DateTo" style="border: none">
+								<span class="input-group-btn">
+									<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+								</span>
+                </div>
+            </div>
+            <div class=" input-group search-product productId">
+                <input type="text" class="input-test" placeholder="产品编号" style="padding: 0 5px" ng-model="SearchItem.ProductCode"/>
+            </div>
+            <div class=" input-group search-product">
+                <a class="btn btn-danger" ng-click="searchList()"><i class="fa fa-search"></i>搜索</a>
+            </div>
+            <div class=" input-group portlet-search">
+                <a href="#" ng-if="isShowList==true" data-toggle="collapse" data-parent="#accordion" data-target="#collapseList" ng-click="ShowList()" >
+                    更多<i class="fa fa-angle-double-down"></i>
+                </a>
+                <a href="#" ng-if="isShowList==false" data-toggle="collapse" data-parent="#accordion" data-target="#collapseList" ng-click="ShowList()" >
+                    收起<i class="fa fa-angle-double-up"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="portlet light" id="accordion">
+        <div class="collapse " id="collapseList">
+            <div class="row-container">
+                <div class="row row-list">
+                    <div class="row-head">
+                        <span class="label label-sm label-default label-mini">产品大类:</span>
+                    </div>
+                    <div class="row-product" id="tabList">
+                        <div class="test-button"><a href="#" ng-click="allList()">不限</a></div>
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" class="active">
+                                <a href="#tab_1_1_1" data-toggle="tab">{{catelog[0].Name}}<span class="caret"></span></a>
+                            </li>
+                            <li  role="presentation">
+                                <a href="#tab_1_1_2" data-toggle="tab">{{catelog[1].Name}} <span class="caret"></span> </a>
+                            </li>
+                            <li  role="presentation">
+                                <a href="#tab_1_1_3" data-toggle="tab">{{catelog[2].Name}}<span class="caret"></span> </a>
+                            </li>
+                            <li  role="presentation">
+                                <a href="#tab_1_1_4" data-toggle="tab">{{catelog[3].Name}} <span class="caret"></span> </a>
+                            </li>
+                            <li  role="presentation">
+                                <a href="#tab_1_1_5" data-toggle="tab">{{catelog[4].Name}}<span class="caret"></span> </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane tab-pane2 active" id="tab_1_1_1">
+                                <ul>
+                                    <li ng-repeat="item in catelog[0].module">
+                                        <div class="check-item">
+                                            <span>
+                                                <input type="checkbox" ng-click="checkItems(item)"/>{{item.Name}}
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane tab-pane2" id="tab_1_1_2">
+                                <ul>
+                                    <li ng-repeat="item in catelog[1].module">
+                                        <div class="check-item">
+                                            <span>
+                                                <input type="checkbox" ng-click="checkItems(item)"/>{{item.Name}}
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane tab-pane2" id="tab_1_1_3">
+                                <ul>
+                                    <li ng-repeat="item in catelog[2].module">
+                                        <div class="check-item">
+                                            <span>
+                                                <input type="checkbox" ng-click="checkItems(item)"/>{{item.Name}}
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane tab-pane2" id="tab_1_1_4">
+                                <ul>
+                                    <li ng-repeat="item in catelog[3].module">
+                                        <div class="check-item">
+                                            <span>
+                                                <input type="checkbox" ng-click="checkItems(item)"/>{{item.Name}}
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane tab-pane2" id="tab_1_1_5">
+                                <ul>
+                                    <li ng-repeat="item in catelog[4].module">
+                                        <div class="check-item">
+                                            <span>
+                                                <input type="checkbox" ng-click="checkItems(item)"/>{{item.Name}}
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="row row-list">
+                    <div class="row-head">
+                        <span class="label label-sm label-default label-mini">地区选择:</span>
+                    </div>
+                    <div class="row-body">
+                        <ul id="brand">
+                            <li><a href="#">不限</a></li>
+                            <li>
+                                <div class="inner">
+                                    <input type="checkbox" />上海
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inner">
+                                    <input type="checkbox" />北京
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inner">
+                                    <input type="checkbox" />天津
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inner">
+                                    <input type="checkbox" />西北地区
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inner">
+                                    <input type="checkbox" />华南地区
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="more-button">
+                            <a href="#more" ng-if="isShow==true" ng-click="packUpDown()" class="more-down" data-toggle="collapse">更多<i class="fa fa-angle-double-down"></i></a>
+                            <a href="#more" ng-if="isShow==false" ng-click="packUpDown()" class="more-up" data-toggle="collapse">收起<i class="fa fa-angle-double-up"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="collapse" id="more">
+                    <div class="container">
+                        <ul>
+                            <li><input type="checkbox" />广东 </li>
+                            <li><input type="checkbox" />浙江 </li>
+                            <li><input type="checkbox" />安徽 </li>
+                            <li><input type="checkbox" />河南 </li>
+                            <li><input type="checkbox" />河北 </li>
+                            <li><input type="checkbox" />湖南</li>
+                            <li><input type="checkbox" />湖北</li>
+                            <li><input type="checkbox"/>山东</li>
+                            <li><input type="checkbox" />山西</li>
+                            <li><input type="checkbox" />甘肃</li>
+                            <li><input type="checkbox" />吉林</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="row row-list ">
+                    <div class="row-head">
+                        <span class="label label-sm label-default label-mini">仓库选择:</span>
+                    </div>
+                    <div class="row-body">
+                        <ul>
+                            <li><a href="#">不限</a></li>
+                            <li ng-repeat="item in StoreInfo track by $index">
+                                <div class="inner store">
+                                    <input type="checkbox" ng-click="checkStore(item)"/>{{item.Abbr}}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="row row-list">
+                    <div class="row-head">
+                        <span class="label label-sm label-default label-mini">排序分组:</span>
+                    </div>
+                    <div class="row-body">
+                        <ul>
+                            <li><a href="#">不限</a></li>
+                            <li>
+                                <div class="inner">
+                                    <input type="checkbox" />订单
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inner">
+                                    <input type="checkbox"/>交期
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inner">
+                                    <input type="checkbox" />地区
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#tabList a').click(function (e) {
+            e.preventDefault();
+        });
+    });
+
+    $('.date-picker').datepicker({
+        todayHighlight:true
+    });
+</script>
