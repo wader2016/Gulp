@@ -13,7 +13,7 @@ MetronicApp.controller('SignUpController',['$http','$scope','$location','$timeou
     $scope.signUp = function () {
 
         authService.saveRegistration($scope.registration).then(function (response) {
-
+                //  设置自动登录
                 $scope.savedSuccessfully = true;
                 $scope.message = "注册成功！2秒中后跳转到登录页面";
                 startTimer();
